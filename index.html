@@ -141,10 +141,21 @@
   .group-title { text-align: center; font-size: 30px; color: var(--mint); margin: var(--s9) 0 var(--s7); }
   .group-title.dark { color: var(--ink); }
   .group-title.first { margin-top: 0; }
+  .mgmt { position: relative; border: 2px solid var(--mint); border-radius: calc(80px + var(--s6)); padding: var(--s6) var(--s6) var(--s7); margin-bottom: var(--s8); }
+  .mgmt-label { position: absolute; top: -12px; right: calc(80px + var(--s6)); margin: 0; padding: 0 var(--s3); background: var(--ink); color: var(--mint); font-family: var(--head); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 22px; }
+  @media (max-width: 520px) { .mgmt { border-radius: calc(64px + var(--s4)); padding: var(--s5) var(--s4) var(--s6); } .mgmt-label { right: calc(64px + var(--s4)); } }
   .tags { margin: var(--s3) 0 0; display: flex; justify-content: center; gap: var(--s2); }
   .tag { font-family: var(--head); font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 3px var(--s2); }
   .tag-edi { background: var(--mint); color: var(--ink); }
   .tag-careers { background: var(--copper); color: var(--charcoal); }
+  .tag-sust { background: var(--mist); color: var(--ink); }
+  .tag-eng, .tag-adv { background: var(--white); color: var(--ink); }
+  .tags { flex-wrap: wrap; }
+  .person h3 a { color: inherit; text-decoration: none; }
+  .person h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .portrait-link { display: block; width: max-content; margin: 0 auto; }
+  .people-coi { margin-top: var(--s4); }
+
 
   /* About */
   .about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s8); align-items: start; }
@@ -341,103 +352,101 @@
     <div class="wrap">
       <header class="section-head center">
         <h2>Team</h2>
-        <p class="lede">The management group and co-investigators leading the network.</p>
+        <p class="lede">The investigators leading the network.</p>
       </header>
-      <h3 class="group-title first">Management group</h3>
-      <div class="people people-lead">
+      <div class="mgmt">
+        <p class="mgmt-label">Management group</p>
+        <div class="people people-lead">
           <article class="person is-pi">
-            <img class="portrait" src="assets/team/mahmoudwagih.jpg" alt="Mahmoud Wagih" loading="lazy">
-            <h3>Mahmoud Wagih</h3>
+            <a class="portrait-link" href="https://www.gla.ac.uk/schools/engineering/staff/mahmoudwagih/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/mahmoudwagih.jpg" alt="" loading="lazy"></a>
+            <h3><a href="https://www.gla.ac.uk/schools/engineering/staff/mahmoudwagih/" target="_blank" rel="noopener">Mahmoud Wagih</a></h3>
             <p class="role">Principal Investigator</p>
-            <p class="org">University of Glasgow</p>
-            <p class="bio">Leads the Green RF-Enabled Electronics Lab, working on RF wireless power, RF sensing and sustainable electronics.</p>
+            <p class="bio">Prof Mahmoud Wagih works on applied electronic materials for RF, wireless and sustainable electronics. He leads RaRE as Principal Investigator.</p>
           </article>
           <article class="person">
-            <img class="portrait" src="assets/team/dimitrageorgiadou.jpg" alt="Dimitra Georgiadou" loading="lazy">
-            <h3>Dimitra Georgiadou</h3>
+            <a class="portrait-link" href="https://www.southampton.ac.uk/people/5y5dzq/doctor-dimitra-georgiadou" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/dimitrageorgiadou.jpg" alt="" loading="lazy"></a>
+            <h3><a href="https://www.southampton.ac.uk/people/5y5dzq/doctor-dimitra-georgiadou" target="_blank" rel="noopener">Dimitra Georgiadou</a></h3>
             <p class="role">Southampton Lead</p>
-            <p class="org">University of Southampton</p>
-            <p class="bio">Works on printed and large-area electronics, including nanogap devices for high frequency applications.</p>
+            <p class="bio">Prof Dimitra Georgiadou works on nanoelectronics for RF, neuromorphic and sensing devices. She leads RaRE at Southampton.</p>
           </article>
           <article class="person">
-            <img class="portrait" src="assets/team/willwhittow.jpg" alt="Will Whittow" loading="lazy">
-            <h3>Will Whittow</h3>
+            <a class="portrait-link" href="https://www.lboro.ac.uk/schools/meme/staff/william-whittow/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/willwhittow.jpg" alt="" loading="lazy"></a>
+            <h3><a href="https://www.lboro.ac.uk/schools/meme/staff/william-whittow/" target="_blank" rel="noopener">Will Whittow</a></h3>
             <p class="role">Loughborough Lead</p>
-            <p class="org">Loughborough University</p>
-            <p class="bio">Professor of Radio Frequency Materials, working on RF materials, additively manufactured antennas and metamaterials.</p>
+            <p class="bio">Prof Will Whittow works on RF materials, wireless communications and wearable electronics. He leads RaRE at Loughborough and co-leads EDI for RaRE.</p>
             <p class="tags"><span class="tag tag-edi">EDI</span></p>
           </article>
           <article class="person">
-            <img class="portrait" src="assets/team/luciacorsini.jpg" alt="Lucia Corsini" loading="lazy">
-            <h3>Lucia Corsini</h3>
+            <a class="portrait-link" href="https://eng.ox.ac.uk/people/lucia-corsini" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/luciacorsini.jpg" alt="" loading="lazy"></a>
+            <h3><a href="https://eng.ox.ac.uk/people/lucia-corsini" target="_blank" rel="noopener">Lucia Corsini</a></h3>
             <p class="role">Oxford Lead</p>
-            <p class="org">University of Oxford</p>
-            <p class="bio">Bio to follow.</p>
-            <p class="tags"><span class="tag tag-careers">Careers</span></p>
+            <p class="bio">Prof Lucia Corsini works on the circular economy and material flows for electronics. She leads RaRE at Oxford, leads the careers group and co-leads sustainability for RaRE.</p>
+            <p class="tags"><span class="tag tag-careers">Careers</span><span class="tag tag-sust">Sustainability</span></p>
           </article>
+        </div>
       </div>
-      <h3 class="group-title">Co-investigators</h3>
       <div class="people people-coi">
-          <article class="person">
-            <img class="portrait" src="assets/team/aakashbansal.jpg" alt="Aakash Bansal" loading="lazy">
-            <h3>Aakash Bansal</h3>
-            <p class="role">Co-Investigator</p>
-            <p class="org">Loughborough University</p>
-            <p class="bio">Works on antennas, metasurfaces and RF systems, including satellite communications.</p>
-            <p class="tags"><span class="tag tag-careers">Careers</span></p>
-          </article>
-          <article class="person">
-            <img class="portrait" src="assets/team/adammckenzie.jpg" alt="Adam McKenzie" loading="lazy">
-            <h3>Adam McKenzie</h3>
-            <p class="role">Co-Investigator</p>
-            <p class="org">Affiliation to follow</p>
-            <p class="bio">Bio to follow.</p>
-            <p class="tags"><span class="tag tag-careers">Careers</span></p>
-          </article>
-          <article class="person">
-            <img class="portrait" src="assets/team/benjaminking.jpg" alt="Benjamin King" loading="lazy">
-            <h3>Benjamin King</h3>
-            <p class="role">Co-Investigator</p>
-            <p class="org">University of Glasgow</p>
-            <p class="bio">Bio to follow.</p>
-            <p class="tags"><span class="tag tag-careers">Careers</span></p>
-          </article>
-          <article class="person">
-            <img class="portrait" src="assets/team/dougpaul.jpg" alt="Doug Paul" loading="lazy">
-            <h3>Doug Paul</h3>
-            <p class="role">Co-Investigator</p>
-            <p class="org">University of Glasgow</p>
-            <p class="bio">Works on semiconductor devices, nanofabrication and quantum technologies.</p>
-          </article>
-          <article class="person">
-            <img class="portrait" src="assets/team/emilydraper.jpg" alt="Emily Draper" loading="lazy">
-            <h3>Emily Draper</h3>
-            <p class="role">Co-Investigator</p>
-            <p class="org">University of Glasgow</p>
-            <p class="bio">Chemist working on self-assembled organic materials and gels for electronic applications.</p>
-            <p class="tags"><span class="tag tag-edi">EDI</span></p>
-          </article>
-          <article class="person">
-            <img class="portrait" src="assets/team/gemmamilne.jpg" alt="Gemma Milne" loading="lazy">
-            <h3>Gemma Milne</h3>
-            <p class="role">Co-Investigator</p>
-            <p class="org">University of Glasgow</p>
-            <p class="bio">Researches deep tech, technology hype and innovation policy.</p>
-          </article>
-          <article class="person">
-            <img class="portrait" src="assets/team/jeffkettle.jpg" alt="Jeff Kettle" loading="lazy">
-            <h3>Jeff Kettle</h3>
-            <p class="role">Co-Investigator</p>
-            <p class="org">University of Glasgow</p>
-            <p class="bio">Works on sustainable electronics, life cycle assessment and printed photovoltaics.</p>
-          </article>
-          <article class="person">
-            <img class="portrait" src="assets/team/skumar.jpg" alt="Shanmugam Kumar" loading="lazy">
-            <h3>Shanmugam Kumar</h3>
-            <p class="role">Co-Investigator</p>
-            <p class="org">University of Glasgow</p>
-            <p class="bio">Works on additive manufacturing, composites and architected materials.</p>
-          </article>
+        <article class="person">
+          <a class="portrait-link" href="https://www.lboro.ac.uk/schools/meme/staff/aakash-bansal/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/aakashbansal.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://www.lboro.ac.uk/schools/meme/staff/aakash-bansal/" target="_blank" rel="noopener">Aakash Bansal</a></h3>
+          <p class="role">Co-Lead</p>
+          <p class="bio">Dr Aakash Bansal works on multi-material additive manufacturing, antennas and metamaterials. He co-leads careers for RaRE.</p>
+          <p class="tags"><span class="tag tag-careers">Careers</span></p>
+        </article>
+        <article class="person">
+          <a class="portrait-link" href="https://www.gla.ac.uk/schools/engineering/staff/adammckenzie/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/adammckenzie.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://www.gla.ac.uk/schools/engineering/staff/adammckenzie/" target="_blank" rel="noopener">Adam McKenzie</a></h3>
+          <p class="role">Researcher Co-Lead</p>
+          <p class="bio">Dr Adam McKenzie works on semiconductor physics and III-V materials growth for photonics and quantum. He co-leads careers for RaRE.</p>
+          <p class="tags"><span class="tag tag-careers">Careers</span></p>
+        </article>
+        <article class="person">
+          <a class="portrait-link" href="https://www.gla.ac.uk/schools/engineering/staff/benjaminking/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/benjaminking.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://www.gla.ac.uk/schools/engineering/staff/benjaminking/" target="_blank" rel="noopener">Benjamin King</a></h3>
+          <p class="role">Researcher Co-Lead</p>
+          <p class="bio">Dr Benjamin King works on organic and thin-film electronics, multifunctional materials and scalable device characterisation. He co-leads careers for RaRE.</p>
+          <p class="tags"><span class="tag tag-careers">Careers</span></p>
+        </article>
+        <article class="person">
+          <a class="portrait-link" href="https://www.gla.ac.uk/schools/engineering/staff/douglaspaul/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/dougpaul.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://www.gla.ac.uk/schools/engineering/staff/douglaspaul/" target="_blank" rel="noopener">Douglas Paul</a></h3>
+          <p class="role">Co-Lead</p>
+          <p class="bio">Prof Douglas Paul works on quantum technologies, MEMS and heterogeneous integration. He leads advocacy and trusted research for RaRE.</p>
+          <p class="tags"><span class="tag tag-adv">Advocacy and trusted research</span></p>
+        </article>
+        <article class="person">
+          <a class="portrait-link" href="https://www.gla.ac.uk/schools/chemistry/staff/emilydraper/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/emilydraper.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://www.gla.ac.uk/schools/chemistry/staff/emilydraper/" target="_blank" rel="noopener">Emily Draper</a></h3>
+          <p class="role">Co-Lead</p>
+          <p class="bio">Prof Emily Draper works on soft and organic materials for electronics and photonics, including AI-driven design. She co-leads EDI for RaRE.</p>
+          <p class="tags"><span class="tag tag-edi">EDI</span></p>
+        </article>
+        <article class="person">
+          <a class="portrait-link" href="https://www.gla.ac.uk/schools/business/staff/gemmamilne/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/gemmamilne.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://www.gla.ac.uk/schools/business/staff/gemmamilne/" target="_blank" rel="noopener">Gemma Milne</a></h3>
+          <p class="role">Co-Lead</p>
+          <p class="bio">Dr Gemma Milne works on supply chain management for critical technologies. She leads external engagement for RaRE.</p>
+          <p class="tags"><span class="tag tag-eng">External engagement</span></p>
+        </article>
+        <article class="person">
+          <a class="portrait-link" href="https://www.gla.ac.uk/schools/engineering/staff/jeffreykettle/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/jeffkettle.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://www.gla.ac.uk/schools/engineering/staff/jeffreykettle/" target="_blank" rel="noopener">Jeff Kettle</a></h3>
+          <p class="role">Co-Lead</p>
+          <p class="bio">Prof Jeff Kettle works on advanced packaging, semiconductor reliability and design for circularity. He co-leads sustainability for RaRE.</p>
+          <p class="tags"><span class="tag tag-sust">Sustainability</span></p>
+        </article>
+        <article class="person">
+          <a class="portrait-link" href="https://www.gla.ac.uk/schools/engineering/staff/kumarshanmugam/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/skumar.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://www.gla.ac.uk/schools/engineering/staff/kumarshanmugam/" target="_blank" rel="noopener">Shanmugam Kumar</a></h3>
+          <p class="role">Co-Lead</p>
+          <p class="bio">Prof Shanmugam Kumar works on mechanical metamaterials, self-sensing materials and additive manufacturing.</p>
+        </article>
+        <article class="person">
+          <a class="portrait-link" href="https://mtt.org/profile/sulekha-chattopadhyay/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img class="portrait" src="assets/team/sulekah-headshot.jpg" alt="" loading="lazy"></a>
+          <h3><a href="https://mtt.org/profile/sulekha-chattopadhyay/" target="_blank" rel="noopener">Sulekha Chattopadhyay</a></h3>
+          <p class="role">Visiting Researcher</p>
+          <p class="bio">Dr Sulekha Chattopadhyay works on sustainability, electrification and environmental policy at the California Environmental Protection Agency.</p>
+        </article>
       </div>
     </div>
   </section>
