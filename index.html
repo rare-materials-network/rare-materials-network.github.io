@@ -113,19 +113,21 @@
   .hero-nav a:hover { background: var(--mint); color: var(--charcoal); }
   .tagline { margin-top: var(--s7); }
   .leads-band { background: var(--white); color: var(--charcoal); padding: var(--s6) 0; border-bottom: 1px solid rgba(13,59,62,.12); }
-  .band-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 1fr); gap: var(--s7); align-items: end; max-width: 1320px; }
+  .band-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: var(--s5) var(--s6); max-width: 1400px; }
   .band-group p { margin: 0 0 var(--s3); font-size: 14px; font-weight: 400; color: var(--charcoal); }
-  .band-logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s6); align-items: center; }
-  .funder { padding-left: var(--s7); border-left: 1px solid rgba(13,59,62,.2); }
-  .funder .band-logos { grid-template-columns: 1fr; }
-  .band-logos li { height: 60px; display: flex; align-items: center; }
-  .band-logos img { max-height: 100%; max-width: 100%; width: auto; object-fit: contain; }
-  @media (max-width: 900px) {
-    .band-grid { grid-template-columns: 1fr; gap: var(--s5); }
+  .band-logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s5) 28px; align-items: center; }
+  .band-logos li { height: 48px; display: flex; align-items: center; }
+  .band-logos img { height: 100%; width: auto; max-width: none; }
+  .funder { padding-left: var(--s6); border-left: 1px solid rgba(13,59,62,.2); }
+  .funder .band-logos li { height: 56px; }
+  @media (max-width: 1180px) {
     .funder { padding-left: 0; border-left: 0; padding-top: var(--s5); border-top: 1px solid rgba(13,59,62,.2); }
-    .band-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5) var(--s5); }
-    .band-logos li { height: 52px; }
-    .funder .band-logos li { justify-content: flex-start; max-width: 220px; }
+  }
+  @media (max-width: 600px) {
+    .band-grid { justify-content: flex-start; }
+    .band-logos { gap: var(--s4) var(--s5); }
+    .band-logos li { height: 38px; }
+    .funder .band-logos li { height: 44px; }
   }
 
   /* ---------- Sections ---------- */
@@ -266,6 +268,14 @@
 
   footer { background: var(--charcoal); padding: var(--s6) 0; font-size: 15px; color: var(--mist); }
   footer .wrap { display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
+  .about-cta { margin-top: var(--s8); text-align: center; }
+  .btn-focus {
+    display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: var(--s4) var(--s7);
+    background: var(--copper); color: var(--charcoal) !important; border: 2px solid var(--copper);
+    font-family: var(--head); font-weight: 700; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+    transition: background .15s, color .15s;
+  }
+  .btn-focus:hover { background: var(--ink); border-color: var(--ink); color: var(--white) !important; }
 </style>
 
 
@@ -321,6 +331,7 @@
         <p>Funded by</p>
         <ul class="band-logos">
           <li><img src="assets/leads/epsrc.png" alt="UKRI Engineering and Physical Sciences Research Council"></li>
+          <li><img src="assets/leads/innovateuk.png" alt="UKRI Innovate UK"></li>
         </ul>
       </div>
     </div>
@@ -342,6 +353,9 @@
         <div class="focus-item"><h3>Responsible</h3><p>Lower impact materials and processes, designed for reuse, repair and recovery.</p></div>
         <div class="focus-item"><h3>Resilient</h3><p>Enabling a secure supply chains through novel devices, materials, and circularity.</p></div>
         <div class="focus-item"><h3>Electromagnetic performance</h3><p>Focusing on application-agnostic material properties, enabling critical technologies from telecoms, power, to quantum.</p></div>
+      </div>
+      <div class="about-cta">
+        <a class="btn-focus" href="technical.html">Explore our technical focus</a>
       </div>
     </div>
   </section>

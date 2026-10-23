@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Technical Focus | RaRE Materials Network+</title>
+<meta name="description" content="Responsible and Resilient Electronic and Electromagnetic Materials Network+. An EPSRC funded UK research network led by the Universities of Glasgow, Oxford, Southampton and Loughborough.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/brand/favicon-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180x180.png">
+<style>
+  /* RaRE brand toolkit colours only (Branding/svg + presentation template). */
+  :root {
+    --ink:      #0D3B3E;   /* Ink Teal */
+    --charcoal: #16211F;   /* Charcoal */
+    --green:    #1B8A82;   /* Signal Green */
+    --mint:     #A2D3CE;   /* Mint */
+    --copper:   #CC7A2E;   /* Copper */
+    --mist:     #EDF5F4;   /* Mist */
+    --grey:     #7C8A88;   /* Grey */
+    --white:    #FFFFFF;
+
+    /* spacing scale, 4px base */
+    --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px;
+    --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 128px;
+
+    --bar-h: 72px;
+    --max: 1200px;
+    --sans: Calibri, Carlito, Arial, "Liberation Sans", sans-serif;
+    --head: Arial, "Liberation Sans", Helvetica, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; border-radius: 0; }
+  html { scroll-behavior: smooth; scrollbar-color: var(--green) var(--charcoal); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--charcoal); color: var(--white);
+    font-family: var(--sans); font-size: 18px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; caret-color: var(--mint);
+  }
+  ::selection { background: var(--mint); color: var(--ink); }
+  img { max-width: 100%; display: block; }
+  a { color: var(--mint); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--copper); outline-offset: 2px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--s5); }
+  @media (max-width: 600px) { .wrap { padding: 0 var(--s4); } }
+
+  h2, h3 { font-family: var(--head); text-wrap: balance; }
+  h2 { font-size: clamp(34px, 4.4vw, 52px); line-height: 1.12; letter-spacing: -.015em; margin: 0 0 var(--s4); color: var(--mint); }
+  h3 { font-size: 22px; line-height: 1.25; margin: 0 0 var(--s2); }
+  p { margin: 0 0 var(--s4); }
+  .lede { font-size: 20px; line-height: 1.5; max-width: 60ch; margin: 0; }
+  .caps { font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+
+  /* ---------- Top bar ---------- */
+  .bar {
+    position: fixed; inset: 0 0 auto 0; height: var(--bar-h); z-index: 50;
+    display: flex; align-items: center; background: transparent; transition: background .25s;
+  }
+  .bar.solid { background: var(--charcoal); }
+  .bar .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: var(--s4); max-width: 1320px; }
+  .bar-slot { width: 159px; height: 50px; flex: none; display: block; }
+  .nav { display: flex; gap: var(--s1); flex-wrap: nowrap; align-items: center; }
+  .nav a {
+    color: var(--white); text-decoration: none; font-family: var(--head); font-size: 13px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; padding: var(--s3) var(--s3); white-space: nowrap;
+    opacity: 0; transition: opacity .25s, color .2s;
+  }
+  .bar.solid .nav a { opacity: 1; }
+  .nav a:hover, .nav a.active { color: var(--mint); }
+  .nav a.cta { border: 2px solid var(--mint); color: var(--mint); margin-left: var(--s3); padding: var(--s2) var(--s4); }
+  .nav a.cta:hover { background: var(--mint); color: var(--ink); }
+  .menu-btn { display: none; }
+  @media (max-width: 1120px) {
+    .menu-btn {
+      display: inline-flex; align-items: center; background: none; border: 2px solid var(--mint);
+      color: var(--white); font: 700 13px var(--head); letter-spacing: .08em; text-transform: uppercase;
+      padding: var(--s2) var(--s4); min-height: 44px; cursor: pointer; opacity: 0; transition: opacity .25s;
+    }
+    .bar.solid .menu-btn { opacity: 1; }
+    .nav {
+      position: fixed; top: var(--bar-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--charcoal); padding: var(--s2) var(--s4) var(--s5); display: none;
+    }
+    .nav.open { display: flex; }
+    .nav a { opacity: 1; padding: var(--s4) var(--s2); border-bottom: 1px solid rgba(162,211,206,.25); }
+    .nav a.cta { margin: var(--s4) 0 0; text-align: center; border-bottom: 2px solid var(--mint); }
+  }
+
+  /* ---------- Flying logo (brand file, unmodified) ---------- */
+  #flyLogo {
+    position: fixed; top: 0; left: 0; z-index: 60; transform-origin: 0 0; will-change: transform;
+    width: 680px; display: block; text-decoration: none;
+  }
+  #flyLogo img { width: 100%; height: auto; display: block; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: calc(100vh - 150px); min-height: calc(100svh - 150px); background: var(--charcoal);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: calc(var(--bar-h) + var(--s5)) var(--s4) var(--s8); text-align: center;
+  }
+  #heroSlot { width: min(680px, 88vw); aspect-ratio: 700 / 220; }
+  .tagline { margin: var(--s7) auto 0; max-width: 34ch; font-size: clamp(20px, 2.6vw, 28px); line-height: 1.35; color: var(--mint); }
+  .tagline strong { color: var(--white); font-weight: 700; }
+  .hero-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s3); margin-top: var(--s7); }
+  .hero-nav a {
+    font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--white); text-decoration: none; padding: var(--s3) var(--s5); border: 2px solid var(--mint); min-width: 120px; text-align: center;
+    transition: background .15s, color .15s;
+  }
+  .hero-nav a:hover { background: var(--mint); color: var(--charcoal); }
+  .tagline { margin-top: var(--s7); }
+  .leads-band { background: var(--white); color: var(--charcoal); padding: var(--s6) 0; border-bottom: 1px solid rgba(13,59,62,.12); }
+  .band-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: var(--s5) var(--s6); max-width: 1400px; }
+  .band-group p { margin: 0 0 var(--s3); font-size: 14px; font-weight: 400; color: var(--charcoal); }
+  .band-logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s5) 28px; align-items: center; }
+  .band-logos li { height: 48px; display: flex; align-items: center; }
+  .band-logos img { height: 100%; width: auto; max-width: none; }
+  .funder { padding-left: var(--s6); border-left: 1px solid rgba(13,59,62,.2); }
+  .funder .band-logos li { height: 56px; }
+  @media (max-width: 1180px) {
+    .funder { padding-left: 0; border-left: 0; padding-top: var(--s5); border-top: 1px solid rgba(13,59,62,.2); }
+  }
+  @media (max-width: 600px) {
+    .band-grid { justify-content: flex-start; }
+    .band-logos { gap: var(--s4) var(--s5); }
+    .band-logos li { height: 38px; }
+    .funder .band-logos li { height: 44px; }
+  }
+
+  /* ---------- Sections ---------- */
+  section.block { padding: var(--s10) 0; scroll-margin-top: var(--bar-h); }
+  section.dark { background: var(--ink); color: var(--white); }
+  section.light { background: var(--white); color: var(--charcoal); color-scheme: light; }
+  section.light h2, section.light .group-title { color: var(--ink); }
+  section.light .lede { color: var(--charcoal); }
+  section.light a { color: var(--ink); }
+  .section-head { margin-bottom: var(--s8); }
+  .section-head.center { text-align: center; }
+  .section-head.center .lede { margin: 0 auto; }
+  .group-title { text-align: center; font-size: 30px; color: var(--mint); margin: var(--s9) 0 var(--s7); }
+  .group-title.dark { color: var(--ink); }
+  .group-title.first { margin-top: 0; }
+  .mgmt { position: relative; border: 2px solid var(--mint); border-radius: calc(80px + var(--s6)); padding: var(--s6) var(--s6) var(--s7); margin-bottom: var(--s8); }
+  .mgmt-label { position: absolute; top: -12px; right: calc(80px + var(--s6)); margin: 0; padding: 0 var(--s3); background: var(--ink); color: var(--mint); font-family: var(--head); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 22px; }
+  @media (max-width: 520px) { .mgmt { border-radius: calc(64px + var(--s4)); padding: var(--s5) var(--s4) var(--s6); } .mgmt-label { right: calc(64px + var(--s4)); } }
+  .tags { margin: var(--s3) 0 0; display: flex; justify-content: center; gap: var(--s2); }
+  .tag { font-family: var(--head); font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 3px var(--s2); }
+  .tag-edi { background: var(--mint); color: var(--ink); }
+  .tag-careers { background: var(--copper); color: var(--charcoal); }
+  .tag-sust { background: var(--mist); color: var(--ink); }
+  .tag-eng, .tag-adv { background: var(--white); color: var(--ink); }
+  .tags { flex-wrap: wrap; }
+  .person h3 a { color: inherit; text-decoration: none; }
+  .person h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .portrait-link { display: block; width: max-content; margin: 0 auto; }
+  .people-coi { margin-top: var(--s4); }
+
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s8); align-items: start; }
+  .about-grid h2 { margin: 0; }
+  .about-copy .lede { color: var(--ink); font-weight: 700; margin-bottom: var(--s5); }
+  .about-copy p:not(.lede) { max-width: 64ch; }
+  .focus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s7); margin-top: var(--s9); }
+  .focus-item { padding-top: var(--s5); border-top: 4px solid var(--copper); }
+  .focus-item h3 { font-size: 24px; }
+  .focus-item h3 { color: var(--ink); }
+  .focus-item p { margin: 0; color: var(--charcoal); }
+  @media (max-width: 900px) { .about-grid, .focus { grid-template-columns: 1fr; gap: var(--s6); } }
+
+  /* People: circular portraits, no boxes, centred names */
+  .people { display: grid; gap: var(--s8) var(--s6); text-align: center; }
+  .people-lead  { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .people-coi   { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .people-board { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s7) var(--s5); }
+  .portrait { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; margin: 0 auto var(--s5); }
+  .person h3 { font-size: 22px; color: var(--mint); margin-bottom: var(--s2); }
+  .person .role { font-family: var(--head); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--white); margin: 0 0 var(--s2); }
+  .person.is-pi .role { color: var(--copper); }
+  .person .org { font-size: 16px; color: var(--mist); margin: 0 0 var(--s3); }
+  .person .bio { font-size: 16px; line-height: 1.5; color: var(--mist); margin: 0 auto; max-width: 30ch; opacity: .9; }
+  @media (max-width: 1000px) {
+    .people-lead, .people-coi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .people-board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 520px) {
+    .people-lead, .people-coi, .people-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s6) var(--s4); }
+    .portrait { width: 128px; height: 128px; }
+    .person h3 { font-size: 19px; }
+    .person .bio { font-size: 15px; }
+  }
+
+  /* Partners: white section, square logo tiles */
+  .logo-group { font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: var(--s8) 0 var(--s4); padding-bottom: var(--s3); border-bottom: 2px solid var(--ink); }
+  .section-head + .logo-group { margin-top: 0; }
+  .logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: var(--s5) var(--s4); }
+  .logo-item { margin: 0; }
+  .logo-tile {
+    aspect-ratio: 16 / 9; background: var(--white);
+    display: flex; align-items: center; justify-content: center; padding: var(--s4);
+  }
+  .logo-tile img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+  .logo-tile.text { background: var(--mist); }
+  .logo-tile.text span { font-family: var(--head); font-weight: 700; font-size: 15px; line-height: 1.25; color: var(--ink); text-align: center; }
+  .logo-item figcaption { font-size: 14px; line-height: 1.35; color: var(--charcoal); text-align: center; margin-top: var(--s2); }
+  @media (max-width: 480px) { .logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s4) var(--s3); } }
+  .board { margin-top: var(--s9); }
+  .board .person h3 { color: var(--ink); }
+  .board .person .role { color: var(--charcoal); }
+  .board .person.is-pi .role { color: var(--charcoal); }
+  .board .person .org { color: var(--charcoal); }
+
+  /* Funding: three side-by-side solid blocks */
+  .calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s5); }
+  .call { padding: var(--s7) var(--s6); min-height: 300px; display: flex; flex-direction: column; color: var(--charcoal); }
+  .call h3 { font-size: 30px; line-height: 1.15; margin-bottom: var(--s4); }
+  .call p { margin: 0 0 var(--s5); }
+  .call .status { margin: auto 0 0; padding-top: var(--s4); border-top: 2px solid currentColor; font-family: var(--head); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .c-mint   { background: var(--mint); }
+  .c-mist   { background: var(--mist); }
+  .c-copper { background: var(--copper); }
+  .c-mint h3, .c-mist h3 { color: var(--ink); }
+  @media (max-width: 900px) { .calls { grid-template-columns: 1fr; } .call { min-height: 0; } }
+
+  /* Launch and events */
+  .launch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); }
+  .launch-hero {
+    position: relative; min-height: 64vh; display: flex; flex-direction: column; justify-content: flex-end;
+    background: var(--ink) center / cover no-repeat;
+    background-image: url("assets/royalsociety.png");
+  }
+  .launch-body { background: var(--ink); padding: var(--s6) var(--s6) var(--s6); margin-right: 18%; }
+  .launch-body .when { font-family: var(--head); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--mint); margin: 0 0 var(--s3); }
+  .launch-body h3 { font-size: clamp(28px, 3.2vw, 40px); line-height: 1.1; margin-bottom: var(--s3); color: var(--white); }
+  .launch-body p { color: var(--mist); margin: 0; }
+  .credit { position: absolute; top: 0; right: 0; font-size: 12px; color: var(--white); background: var(--charcoal); padding: 2px var(--s2); }
+  .credit a { color: inherit; }
+  .events { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: var(--s5); }
+  .event { background: var(--mint); color: var(--charcoal); padding: var(--s6) var(--s5); display: flex; flex-direction: column; }
+  .event .where { font-family: var(--head); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: 0 0 var(--s3); }
+  .event h3 { font-size: 22px; color: var(--ink); margin-bottom: var(--s2); }
+  .event p { font-size: 16px; margin: 0; }
+  .event.empty { background: transparent; border: 2px solid rgba(13,59,62,.3); color: var(--ink); justify-content: center; align-items: center; text-align: center; }
+  .event.empty p { color: var(--ink); }
+  @media (max-width: 960px) { .launch-grid { grid-template-columns: 1fr; } .launch-hero { min-height: 460px; } }
+  @media (max-width: 520px) { .events { grid-template-columns: 1fr; grid-template-rows: none; } .event.empty[aria-hidden] { display: none; } .launch-body { margin-right: 0; padding: var(--s5); } }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s8); align-items: stretch; }
+  .contact-grid h2 { margin-bottom: var(--s6); }
+  address { font-style: normal; color: var(--mist); margin: 0 0 var(--s5); line-height: 1.6; }
+  .mail { font-size: 22px; font-weight: 700; color: var(--mint); word-break: break-all; }
+  .signup { background: var(--mint); color: var(--ink); padding: var(--s7) var(--s6); }
+  .signup h3 { font-size: 30px; margin-bottom: var(--s3); }
+  .signup p { color: var(--charcoal); }
+  .btn {
+    display: inline-flex; align-items: center; min-height: 52px; background: var(--ink); color: var(--white);
+    font-family: var(--head); font-weight: 700; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+    padding: var(--s3) var(--s6); margin: var(--s2) 0 var(--s5); border: 2px solid var(--ink); transition: background .15s, color .15s;
+  }
+  .btn:hover { background: transparent; color: var(--ink); }
+  .btn:focus-visible { outline-color: var(--ink); }
+  .small { font-size: 15px; margin: 0; }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; gap: var(--s7); } .signup { padding: var(--s6) var(--s5); } }
+
+  footer { background: var(--charcoal); padding: var(--s6) 0; font-size: 15px; color: var(--mist); }
+  footer .wrap { display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
+
+  /* ---------- Technical focus page ---------- */
+  .bar.static { background: var(--charcoal); }
+  .bar.static .nav a, .bar.static .menu-btn { opacity: 1; }
+  .bar-logo { display: block; width: 159px; flex: none; }
+  .bar-logo img { width: 100%; height: auto; }
+  .page-head { background: var(--charcoal); padding: calc(var(--bar-h) + var(--s9)) 0 var(--s9); }
+  .page-head h1 { font-family: var(--head); font-size: clamp(40px, 5.4vw, 64px); line-height: 1.08; letter-spacing: -.02em; color: var(--mint); margin: 0 0 var(--s5); }
+  .page-head .lede { color: var(--mist); }
+  .back { display: inline-block; margin-bottom: var(--s6); font-family: var(--head); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--mint); text-decoration: none; }
+  .back:hover { text-decoration: underline; }
+
+  .sigs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--s7) var(--s5); }
+  .sig { text-align: center; }
+  .bubble {
+    width: 100%; max-width: 184px; aspect-ratio: 1; border-radius: 50%; margin: 0 auto var(--s5);
+    display: flex; align-items: center; justify-content: center; padding: var(--s5);
+    font-family: var(--head); font-weight: 700; font-size: 17px; line-height: 1.2; color: var(--ink); text-wrap: balance;
+  }
+  .b-mint { background: var(--mint); }
+  .b-mist { background: var(--mist); }
+  .b-copper { background: var(--copper); color: var(--charcoal); }
+  .b-ink { background: var(--ink); color: var(--white); }
+  .b-green { background: var(--green); color: var(--white); }
+  .sig p { font-size: 16px; line-height: 1.5; color: var(--charcoal); margin: 0; }
+  .leads-call { margin: var(--s9) auto 0; max-width: 760px; text-align: center; padding-top: var(--s6); border-top: 2px solid var(--ink); }
+  .leads-call h3 { font-size: 26px; color: var(--ink); margin-bottom: var(--s3); }
+  .leads-call p { color: var(--charcoal); margin: 0 0 var(--s5); }
+  .leads-call .btn { margin: 0; color: var(--white); }
+  .leads-call .btn:hover { color: var(--ink); }
+  @media (max-width: 1100px) { .sigs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .sigs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s6) var(--s4); } .bubble { font-size: 15px; padding: var(--s4); } .sig p { font-size: 15px; } }
+
+  .themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s5); }
+  .theme { padding: var(--s6) var(--s6) var(--s6); min-height: 240px; display: flex; flex-direction: column; color: var(--charcoal); }
+  .theme .num { font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: 0 0 var(--s3); }
+  .theme h3 { font-size: 26px; line-height: 1.2; color: var(--ink); margin-bottom: var(--s5); }
+  .theme .who { margin: auto 0 0; padding-top: var(--s4); border-top: 2px solid var(--ink); font-size: 16px; }
+  .theme .who strong { font-family: var(--head); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin-right: var(--s2); }
+  .theme.c-copper .num, .theme.c-copper h3 { color: var(--charcoal); }
+  .theme.c-copper .who { border-color: var(--charcoal); }
+  .theme.join { background: transparent; border: 2px solid var(--mint); color: var(--white); justify-content: center; }
+  .theme.join h3 { color: var(--mint); }
+  .theme.join p { color: var(--mist); margin: 0 0 var(--s5); }
+  .theme.join a { color: var(--mint); font-weight: 700; }
+  @media (max-width: 960px) { .themes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .themes { grid-template-columns: 1fr; } .theme { min-height: 0; } }
+</style>
+</head>
+<body>
+
+<header class="bar static" id="bar">
+  <div class="wrap">
+    <a class="bar-logo" href="index.html" aria-label="RaRE Materials Network+ home">
+      <img src="assets/brand/rare-horizontal-dark.svg" alt="RaRE Materials Network+" width="700" height="220">
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="index.html#about">About</a>
+      <a href="index.html#team">Team</a>
+      <a href="index.html#partners">Partners</a>
+      <a href="index.html#funding">Funding</a>
+      <a href="index.html#launch">Events</a>
+      <a href="index.html#contact" class="cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <a class="back" href="index.html#about">Back to home</a>
+      <h1>Technical focus</h1>
+      <p class="lede">Six special interest groups bring the community together. Five themes set the challenges we will address.</p>
+    </div>
+  </section>
+
+  <section class="block light" id="sigs">
+    <div class="wrap">
+      <header class="section-head center">
+        <h2>Special interest groups</h2>
+      </header>
+      <ul class="sigs">
+        <li class="sig">
+          <h3 class="bubble b-mint">Semiconductor processing and design</h3>
+          <p>The UK III-V design and manufacturing community, complementing silicon CMOS (semiconductor IKCs, IMEC/Europractice, Silicon Catalyst).</p>
+        </li>
+        <li class="sig">
+          <h3 class="bubble b-mist">Packaging, interconnects and printed circuits</h3>
+          <p>PCBs and additive electronics, from low-loss GHz links to high-power and harsh-environment systems, including cryogenic quantum interconnects.</p>
+        </li>
+        <li class="sig">
+          <h3 class="bubble b-copper">Emerging and large-area electronics</h3>
+          <p>Linking new organic, soft and tunable material formulations to electromagnetic characterisation and end-user needs.</p>
+        </li>
+        <li class="sig">
+          <h3 class="bubble b-ink">Adaptive and functional materials</h3>
+          <p>Sensing, thermal management, electrical and mechanical co-design, and metamaterials, working with UKMMN+.</p>
+        </li>
+        <li class="sig">
+          <h3 class="bubble b-green">Metrology for reproducible discovery</h3>
+          <p>Turning new materials into testable devices to measure mobility, dielectric and high-frequency properties. Championed by NPL.</p>
+        </li>
+        <li class="sig">
+          <h3 class="bubble b-mint">Digital and AI-driven design</h3>
+          <p>Self-driving labs for materials synthesis, and electromagnetic, circuit and multiphysics modelling.</p>
+        </li>
+      </ul>
+      <div class="leads-call">
+        <h3>Community leads wanted</h3>
+        <p>Each special interest group needs community leads. We encourage applications from all career stages.</p>
+        <a class="btn" href="mailto:rarenetwork@glasgow.ac.uk?subject=SIG%20community%20lead">Express interest</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block dark" id="themes">
+    <div class="wrap">
+      <header class="section-head center">
+        <h2>Themes and challenges</h2>
+      </header>
+      <div class="themes">
+        <article class="theme c-mint">
+          <p class="num">Th1</p>
+          <h3>Scalable material discovery and synthesis research</h3>
+          <p class="who"><strong>Leads</strong>Emily Draper, Benjamin King</p>
+        </article>
+        <article class="theme c-mist">
+          <p class="num">Th2</p>
+          <h3>Materials-first supply chain resilience</h3>
+          <p class="who"><strong>Leads</strong>Gemma Milne, Adam McKenzie, Aakash Bansal</p>
+        </article>
+        <article class="theme c-copper">
+          <p class="num">Th3</p>
+          <h3>Scalable process development</h3>
+          <p class="who"><strong>Leads</strong>Dimitra Georgiadou, Douglas Paul</p>
+        </article>
+        <article class="theme c-mint">
+          <p class="num">Th4</p>
+          <h3>Cross-scale modelling</h3>
+          <p class="who"><strong>Leads</strong>Jay Chandrappan, Shanmugam Kumar, William Whittow</p>
+        </article>
+        <article class="theme c-mist">
+          <p class="num">Th5</p>
+          <h3>Design for circularity and sustainability</h3>
+          <p class="who"><strong>Leads</strong>Lucia Corsini, Jeff Kettle</p>
+        </article>
+        <div class="theme join">
+          <h3>Get involved</h3>
+          <p>Join a special interest group or contribute to a theme.</p>
+          <p><a href="index.html#contact">Contact the network</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 RaRE Materials Network+</span>
+    <span>Funded by the Engineering and Physical Sciences Research Council (EPSRC)</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('menuBtn'), nav = document.getElementById('nav');
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+})();
+</script>
+</body>
+</html>
